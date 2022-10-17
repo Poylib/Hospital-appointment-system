@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-import Header from '../components/header/Header';
 import { maincolor } from '../theme';
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
   const [reservationHover, setReservationHover] = useState(false);
   const [checkHover, setCheckHover] = useState(false);
   const loadTime = useRef<NodeJS.Timeout>();
-
+  const navigate = useNavigate();
   useEffect(() => {
     setOpenFade(true);
     loadTime.current = setTimeout(() => {
@@ -17,56 +17,61 @@ const Home = () => {
     }, 750);
   }, []);
 
+  const moveReservationHandler: React.MouseEventHandler<HTMLHeadingElement> = e => {
+    if (e.target instanceof HTMLHeadingElement) navigate(`/reservation/${e.target.id}`);
+  };
+
+  const moveCheckHandler: React.MouseEventHandler<HTMLHeadingElement> = e => {
+    if (e.target instanceof HTMLHeadingElement) navigate(`/check/${e.target.id}`);
+  };
+
   return (
-    <>
-      <Header />
-      <StyledHome>
-        <OpenFade openFade={openFade} />
-        {openMain && (
-          <>
-            <div
-              className='main-box reservation-box' //
-              onMouseEnter={() => setReservationHover(true)}
-              onMouseLeave={() => setReservationHover(false)}
-            >
-              {reservationHover ? (
-                <div className='hover-box'>
-                  <h1>진료</h1>
-                  <h1>검진</h1>
-                  <h1>상담</h1>
+    <StyledHome>
+      <OpenFade openFade={openFade} />
+      {openMain && (
+        <>
+          <div
+            className='main-box reservation-box' //
+            onMouseEnter={() => setReservationHover(true)}
+            onMouseLeave={() => setReservationHover(false)}
+          >
+            {reservationHover ? (
+              <div className='hover-box' onClick={moveReservationHandler}>
+                <h1 id='clinic'>진료</h1>
+                <h1 id='checkup'>검진</h1>
+                <h1 id='counseling'>상담</h1>
+              </div>
+            ) : (
+              <>
+                <h1>예약하기</h1>
+                <div>
+                  <span>원하는 날짜와 시간을 정해보세요</span>
                 </div>
-              ) : (
-                <>
-                  <h1>예약하기</h1>
-                  <div>
-                    <span>원하는 날짜와 시간을 정해보세요</span>
-                  </div>
-                </>
-              )}
-            </div>
-            <div
-              className='main-box check-box' //
-              onMouseEnter={() => setCheckHover(true)}
-              onMouseLeave={() => setCheckHover(false)}
-            >
-              {checkHover ? (
-                <div className='hover-box'>
-                  <h1>예약자명</h1>
-                  <h1>예약 번호</h1>
+              </>
+            )}
+          </div>
+          <div
+            className='main-box check-box' //
+            onMouseEnter={() => setCheckHover(true)}
+            onMouseLeave={() => setCheckHover(false)}
+          >
+            {checkHover ? (
+              <div className='hover-box' onClick={moveCheckHandler}>
+                <h1 id='clientname'>예약자명</h1>
+                <h1 id='clientnumber'>예약 번호</h1>
+              </div>
+            ) : (
+              <>
+                <h1>예약조회</h1>
+                <div>
+                  <span>로그인 또는 예약정보로 예약 목록을 조회할 수 있습니다</span>
                 </div>
-              ) : (
-                <>
-                  <h1>예약조회</h1>
-                  <div>
-                    <span>로그인 또는 예약정보로 예약 목록을 조회할 수 있습니다</span>
-                  </div>
-                </>
-              )}
-            </div>
-          </>
-        )}
-      </StyledHome>
-    </>
+              </>
+            )}
+          </div>
+        </>
+      )}
+    </StyledHome>
   );
 };
 
@@ -98,9 +103,10 @@ const StyledHome = styled.div`
     h1 {
       animation: ${fadeIn} 1.4s;
       font-size: 100px;
-      padding-bottom: 40px;
+      margin-bottom: 40px;
     }
     span {
+      padding: 0 15px;
       animation: ${fadeIn} 1.4s;
       font-size: 25px;
     }
