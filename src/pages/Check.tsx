@@ -2,13 +2,11 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Clientname from '../components/check/Clientname';
-import Clientnumber from '../components/check/Clientnumber';
 import { maincolor } from '../theme';
 
 const Check = () => {
   const [openFade, setOpenFade] = useState(false);
   const params = useParams();
-  console.log(params.id);
   useEffect(() => {
     setOpenFade(true);
   }, []);
@@ -16,7 +14,7 @@ const Check = () => {
     <StyledCheck //
       openFade={openFade}
     >
-      {params.id === 'clientname' ? <Clientname /> : <Clientnumber />}
+      {params.id === 'clientname' ? <Clientname page={'name'} /> : <Clientname page={'number'} />}
     </StyledCheck>
   );
 };
