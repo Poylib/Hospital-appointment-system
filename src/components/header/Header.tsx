@@ -1,9 +1,12 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logoImage from '../../assets/logo.png';
 const Header = () => {
   return (
     <StyledHeader>
-      <img src={logoImage} alt='로고 이미지' />
+      <Link to='/'>
+        <img src={logoImage} alt='로고 이미지' />
+      </Link>
     </StyledHeader>
   );
 };

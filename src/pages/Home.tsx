@@ -1,15 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { maincolor } from '../theme';
+import { fadeIn, fadeOut } from '../util/Animation';
 
 const Home = () => {
   const [openFade, setOpenFade] = useState(false);
   const [openMain, setOpenMain] = useState(false);
+  const [closeCheck, setCloseCheck] = useState(false);
   const [reservationHover, setReservationHover] = useState(false);
   const [checkHover, setCheckHover] = useState(false);
   const loadTime = useRef<NodeJS.Timeout>();
   const navigate = useNavigate();
+
   useEffect(() => {
     setOpenFade(true);
     loadTime.current = setTimeout(() => {
@@ -18,7 +21,10 @@ const Home = () => {
   }, []);
 
   const moveReservationHandler: React.MouseEventHandler<HTMLHeadingElement> = e => {
-    if (e.target instanceof HTMLHeadingElement) navigate(`/reservation/${e.target.id}`);
+    setCloseCheck(true);
+    setTimeout(() => {
+      if (e.target instanceof HTMLHeadingElement) navigate(`/reservation/${e.target.id}`);
+    }, 700);
   };
 
   const moveCheckHandler: React.MouseEventHandler<HTMLHeadingElement> = e => {
@@ -26,17 +32,19 @@ const Home = () => {
   };
 
   return (
-    <StyledHome>
+    <StyledHome //
+      closeCheck={closeCheck}
+    >
       <OpenFade openFade={openFade} />
       {openMain && (
         <>
           <div
             className='main-box reservation-box' //
-            onMouseEnter={() => setReservationHover(true)}
+            onClick={() => setReservationHover(true)}
             onMouseLeave={() => setReservationHover(false)}
           >
             {reservationHover ? (
-              <div className='hover-box' onClick={moveReservationHandler}>
+              <div className='hover-box fadeout-reservation' onClick={moveReservationHandler}>
                 <h1 id='clinic'>진료</h1>
                 <h1 id='checkup'>검진</h1>
                 <h1 id='counseling'>상담</h1>
@@ -44,7 +52,7 @@ const Home = () => {
             ) : (
               <>
                 <h1>예약하기</h1>
-                <div>
+                <div className='text-box'>
                   <span>원하는 날짜와 시간을 정해보세요</span>
                 </div>
               </>
@@ -52,7 +60,7 @@ const Home = () => {
           </div>
           <div
             className='main-box check-box' //
-            onMouseEnter={() => setCheckHover(true)}
+            onClick={() => setCheckHover(true)}
             onMouseLeave={() => setCheckHover(false)}
           >
             {checkHover ? (
@@ -63,8 +71,11 @@ const Home = () => {
             ) : (
               <>
                 <h1>예약조회</h1>
-                <div>
-                  <span>로그인 또는 예약정보로 예약 목록을 조회할 수 있습니다</span>
+                <div className='text-box'>
+                  <span>
+                    로그인 또는 예약정보로
+                    <br /> 예약 내역을 조회할 수 있습니다
+                  </span>
                 </div>
               </>
             )}
@@ -77,16 +88,7 @@ const Home = () => {
 
 export default Home;
 
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-
-const StyledHome = styled.div`
+const StyledHome = styled.div<{ closeCheck: boolean }>`
   position: relative;
   width: 100%;
   display: flex;
@@ -99,25 +101,45 @@ const StyledHome = styled.div`
     justify-content: center;
     align-items: center;
     height: 100%;
-
+    cursor: pointer;
     h1 {
-      animation: ${fadeIn} 1.4s;
-      font-size: 100px;
-      margin-bottom: 40px;
+      animation: ${fadeIn} 1s;
+      font-size: 5rem;
+      text-align: center;
     }
     span {
-      padding: 0 15px;
-      animation: ${fadeIn} 1.4s;
-      font-size: 25px;
+      animation: ${fadeIn} 1s;
+      font-size: 1.3rem;
     }
     .hover-box {
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: space-evenly;
+      width: 100%;
       height: 100vh;
+      h1 {
+        height: 33.3%;
+        padding-top: 15%;
+      }
       &:hover {
         cursor: pointer;
       }
+      #clinic,
+      #checkup,
+      #counseling {
+        width: 100%;
+        height: 100%;
+        &:hover {
+          box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        }
+      }
+    }
+    .text-box {
+      margin: 20px;
+    }
+    .fadeout-reservation {
+      animation: ${({ closeCheck }) => (closeCheck ? fadeOut : fadeIn)} 1s ease-out;
     }
   }
 
@@ -126,10 +148,13 @@ const StyledHome = styled.div`
     color: ${maincolor};
   }
   .check-box {
+    position: relative;
     width: 50%;
     background-color: ${maincolor};
     z-index: 10;
     color: white;
+    transition: 2s ease;
+    left: ${({ closeCheck }) => (closeCheck ? '100%' : '0%')};
   }
   @media screen and (max-width: 875px) {
     .main-box {
