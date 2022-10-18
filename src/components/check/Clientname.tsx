@@ -3,19 +3,40 @@ import styled from 'styled-components';
 import { fadeIn } from '../../util/Animation';
 import { BsFilePerson, BsPhone, BsList } from 'react-icons/bs';
 import { basecolor, maincolor } from '../../theme';
+import { numCheck } from '../../util/interface';
+import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { listenerCount } from 'process';
 export type ChildProps = {
   page: ReactNode;
 };
 const Clientname = ({ page }: ChildProps) => {
   const [openFade, setOpenFade] = useState(false);
+  const [name, setName] = useState('');
+  const [phoneNum, setPhoneNum] = useState('');
+  const [reservationNum, setReservationNum] = useState('');
+  const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
       setOpenFade(true);
     }, 700);
   });
 
-  const submitHandler: React.FormEventHandler<HTMLFormElement> = e => {
+  const submitHandler: React.FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
+    if (page === 'name') {
+      try {
+        const { data } = await axios.get('http://localhost:4000/numuser');
+        let reservationNum = 0;
+        data.map((obj: numCheck) => {
+          if (obj.name === name && obj.phoneNumber === phoneNum) reservationNum = obj.reservationNum;
+        });
+        if (reservationNum) navigate(`/reservation/checkpage/${reservationNum}`);
+        else alert('회원정보가 없습니다');
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (
@@ -29,18 +50,18 @@ const Clientname = ({ page }: ChildProps) => {
                 <>
                   <div className='input-box'>
                     <BsFilePerson className='icon' size='26px' />
-                    <input type='text' placeholder='이름' />
+                    <input type='text' placeholder='이름' onChange={e => setName(e.target.value)} />
                   </div>
                   <div className='input-box'>
                     <BsPhone className='icon' size='26px' />
-                    <input type='number' placeholder='전화번호' />
+                    <input type='number' placeholder='전화번호' onChange={e => setPhoneNum(e.target.value)} />
                   </div>
                 </>
               ) : (
                 <>
                   <div className='input-box'>
                     <BsList className='icon' size='26px' />
-                    <input type='number' placeholder='예약번호' />
+                    <input type='number' placeholder='예약번호' onChange={e => setReservationNum(e.target.value)} />
                   </div>
                 </>
               )}
@@ -79,7 +100,6 @@ const StyledClientName = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 100%; */
     h1 {
       font-size: 40px;
     }
@@ -118,7 +138,7 @@ const StyledClientName = styled.div`
       border-radius: 14px;
     }
     .icon {
-      margin: 0 10px;
+      margin: 0 20px;
     }
   }
 `;

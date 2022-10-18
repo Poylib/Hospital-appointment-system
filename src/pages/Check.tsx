@@ -10,6 +10,7 @@ const Check = () => {
   useEffect(() => {
     setOpenFade(true);
   }, []);
+
   return (
     <StyledCheck //
       openFade={openFade}

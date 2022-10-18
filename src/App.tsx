@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Reservation from './pages/Reservation';
 import Header from './components/header/Header';
 import Check from './pages/Check';
+import CheckPage from './components/check/CheckPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/reservation/:id' element={<Reservation />} />
+        <Route path='/reservation/checkpage/:id' element={<CheckPage />} />
         <Route path='/check/:id' element={<Check />} />
       </Routes>
     </>
