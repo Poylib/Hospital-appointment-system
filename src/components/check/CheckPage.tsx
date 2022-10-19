@@ -12,7 +12,7 @@ const CheckPage = ({ viewInfo }: any) => {
       try {
         await axios.delete(`http://localhost:4000/users/${id}`);
         alert('삭제되었습니다');
-        navigate('/');
+        navigate('/pre-onboarding-lululab/');
       } catch (error) {
         alert('통신이 원할하지 않거나 이미 삭제된 예약 입니다.');
       }

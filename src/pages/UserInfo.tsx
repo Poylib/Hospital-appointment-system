@@ -30,10 +30,10 @@ const UserInfo = () => {
         if (el.name === name && el.phoneNumber === phoneNumber) {
           if (el.noshow) {
             alert('노쇼 이력이 있어 예약할 수 없습니다');
-            navigate('/');
+            navigate('/pre-onboarding-lululab/');
           }
           alert('이미 예약한 일정이 있습니다. 중복 예약할 수 없습니다');
-          navigate('/');
+          navigate('/pre-onboarding-lululab/');
         } else setSubmited(!submitied);
       });
       setSubmited(!submitied);
@@ -81,7 +81,7 @@ const UserInfo = () => {
           ) : (
             <button>예약하기</button>
           )}
-          <h2>예약 일자에 노쇼할 경우 불이익이 있을 수 있습니다</h2>
+          <h2>예약 일자에 노쇼할 경우 서비스 이용이 제한됩니다.</h2>
         </form>
       </FormBox>
     </StyledUserInfo>
