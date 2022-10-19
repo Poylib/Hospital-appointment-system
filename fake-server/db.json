@@ -158,6 +158,16 @@
       "name": "d",
       "reservationNum": 638856733,
       "id": 19
+    },
+    {
+      "reservationDate": "2022년 21월 10일",
+      "reservationTime": "14 : 00",
+      "reservation": "검진",
+      "phoneNumber": "01012344321",
+      "noshow": false,
+      "name": "김병원",
+      "reservationNum": 787679065,
+      "id": 20
     }
   ],
   "schedule": [
