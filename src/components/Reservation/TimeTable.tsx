@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { maincolor } from '../../theme';
 
-const TimeTable = ({ schedule }) => {
+const TimeTable = ({ schedule, setSelected, selected }) => {
   const arr = ['10 : 00', '11 : 00', '12 : 00', '13 : 00', '14 : 00', '15 : 00', '16 : 00', '17 : 00', '18 : 00'];
   const navigate = useNavigate();
+  const params = useParams();
   const [timeLine, setTimeLine] = useState(arr);
 
   useEffect(() => {
@@ -15,13 +16,13 @@ const TimeTable = ({ schedule }) => {
 
   const clickHandle: React.MouseEventHandler<HTMLLIElement> = e => {
     if (e.target instanceof HTMLElement) {
+      setSelected(`${selected}-${params.id}-${e.target.innerHTML.split(' : ')[0]}`);
       const targetNum: number = Number(e.target.id);
       const newArr = arrArrangeFunc(arr);
       newArr[targetNum] = '예약하기';
       setTimeLine(newArr);
-
       if (e.target.innerHTML === '예약하기') {
-        navigate(`/infoinput/${targetNum}`);
+        navigate(`/infoinput/${selected}`);
       }
     }
   };

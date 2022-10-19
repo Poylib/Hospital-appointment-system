@@ -10,10 +10,12 @@ import { maincolor } from '../../theme';
 const Calendar = () => {
   const [schedule, setSchedule] = useState([]);
   const [startDate, setStartDate] = useState();
+  const [selected, setSelected] = useState('');
   const today = new Date();
   const dateHandler = async (e: Date) => {
     setStartDate(e);
-    const checkedDate = e.toLocaleDateString().split('/').join('');
+    const checkedDate = e.toLocaleDateString().split('/').join('-');
+    setSelected(checkedDate);
     try {
       const { data } = await axios.get('http://localhost:4000/schedule');
       for (let i = 0; i < data.length; i++) {
@@ -43,7 +45,7 @@ const Calendar = () => {
           disabledKeyboardNavigation
         />
       </CalendarBox>
-      <TimeTable schedule={schedule} />
+      <TimeTable schedule={schedule} setSelected={setSelected} selected={selected} />
     </StyledCalendar>
   );
 };

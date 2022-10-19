@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface userCheck {
-  id: number;
+  id?: number;
   name: string;
   phoneNumber: string;
   noshow: boolean;
