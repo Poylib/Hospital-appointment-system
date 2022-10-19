@@ -6,7 +6,8 @@ import styled from 'styled-components';
 
 const Calendar = () => {
   const dateHandler = (e: Date) => {
-    console.log(e);
+    const checkedDate = e.toDateString().split(' ');
+    console.log(checkedDate);
   };
   return (
     <StyledCalendar>

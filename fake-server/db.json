@@ -18,7 +18,7 @@
       "reservation": "counseling",
       "reservationDate": "2022-10-31",
       "reservationTime": "1100",
-      "reservationNum": 224472840
+      "reservationNum": 224472841
     },
     {
       "id": 5,
@@ -30,5 +30,6 @@
       "reservationTime": "1100",
       "reservationNum": 224432840
     }
-  ]
+  ],
+  "reserved": [""]
 }
