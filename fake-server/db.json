@@ -7,7 +7,7 @@
       "noshow": false,
       "reservation": "clinic",
       "reservationDate": "2022-10-22",
-      "reservationTime": "1040",
+      "reservationTime": "10 : 40",
       "reservationNum": 224812140
     },
     {
@@ -16,8 +16,8 @@
       "phoneNumber": "01012344321",
       "noshow": false,
       "reservation": "counseling",
-      "reservationDate": "2022-10-31",
-      "reservationTime": "1100",
+      "reservationDate": "Oct272022",
+      "reservationTime": "13 : 00",
       "reservationNum": 224472841
     },
     {
@@ -26,10 +26,51 @@
       "phoneNumber": "01012344321",
       "noshow": false,
       "reservation": "counseling",
-      "reservationDate": "2022-10-31",
-      "reservationTime": "1100",
-      "reservationNum": 224432840
+      "reservationDate": "Oct202022",
+      "reservationTime": "11 : 00",
+      "reservationNum": 224432849
+    },
+    {
+      "id": 6,
+      "name": "김박최",
+      "phoneNumber": "01012344320",
+      "noshow": false,
+      "reservation": "clinic",
+      "reservationDate": "Oct202022",
+      "reservationTime": "13 : 00",
+      "reservationNum": 224432850
     }
   ],
-  "reserved": [""]
+  "schedule": [
+    {
+      "id": 1,
+      "date": "10202022",
+      "booked": [
+        {
+          "id": 1,
+          "time": "11 : 00",
+          "reservation": "counseling",
+          "client": 224432849
+        },
+        {
+          "id": 2,
+          "time": "13 : 00",
+          "reservation": "clinic",
+          "client": 224432850
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "date": "10272022",
+      "booked": [
+        {
+          "id": 1,
+          "time": "13 : 00",
+          "reservation": "counseling",
+          "client": 224472841
+        }
+      ]
+    }
+  ]
 }
