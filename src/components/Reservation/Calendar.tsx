@@ -13,8 +13,8 @@ const Calendar = () => {
   const [selected, setSelected] = useState('');
   const today = new Date();
   const dateHandler = async (e: Date) => {
-    setStartDate(e);
     const checkedDate = e.toLocaleDateString().split('/').join('-');
+    setStartDate(e);
     setSelected(checkedDate);
     try {
       const { data } = await axios.get('http://localhost:4000/schedule');
@@ -59,16 +59,16 @@ const StyledCalendar = styled.div`
   min-width: 550px;
   height: 70vh;
   .react-datepicker {
+    width: 100%;
     padding: 30px 20px;
     border: none;
     border-right: 1px solid #eaeaea;
     font-size: 1rem;
-    width: 100%;
     color: #606060;
     .react-datepicker__current-month {
+      padding: 10px;
       font-size: 20px;
       color: white;
-      padding: 10px;
     }
     .react-datepicker__navigation--previous {
       left: 20px;
@@ -101,10 +101,10 @@ const StyledCalendar = styled.div`
         // 날짜 숫자 클래스
         .react-datepicker__day {
           margin: 3%;
-          color: #606060;
           /* color: blue; */
           font-weight: 600;
           font-size: 20px;
+          color: #606060;
         }
         //주말 클래스
         .react-datepicker__day--weekend {

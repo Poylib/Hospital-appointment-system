@@ -20,6 +20,7 @@ const UserInfo = () => {
   if (paramsArr[3] === 'clinic') reservation = '진료';
   else if (paramsArr[3] === 'counseling') reservation = '상담';
   else reservation = '검진';
+
   const submitHandler: React.FormEventHandler<HTMLFormElement> = async e => {
     const reservationNum = Math.floor(Math.random() * 1000000000);
     e.preventDefault();

@@ -110,34 +110,14 @@
       "id": 12
     },
     {
-      "reservationDate": "2022년 28월 10일",
-      "reservationTime": "15 : 00",
-      "reservation": "검진",
-      "phoneNumber": "010",
-      "noshow": false,
-      "name": "김처음",
-      "reservationNum": 718939608,
-      "id": 13
-    },
-    {
       "reservationDate": "2022년 29월 10일",
       "reservationTime": "14 : 00",
       "reservation": "검진",
       "phoneNumber": "010",
-      "noshow": false,
+      "noshow": true,
       "name": "김처음",
       "reservationNum": 977202682,
       "id": 14
-    },
-    {
-      "reservationDate": "2022년 28월 10일",
-      "reservationTime": "14 : 00",
-      "reservation": "검진",
-      "phoneNumber": "010",
-      "noshow": false,
-      "name": "김두본",
-      "reservationNum": 659679006,
-      "id": 15
     },
     {
       "reservationDate": "2022년 29월 10일",
@@ -148,6 +128,16 @@
       "name": "감",
       "reservationNum": 925985816,
       "id": 16
+    },
+    {
+      "reservationDate": "2022년 29월 10일",
+      "reservationTime": "14 : 00",
+      "reservation": "검진",
+      "phoneNumber": "010",
+      "noshow": false,
+      "name": "김처음",
+      "reservationNum": 562640941,
+      "id": 17
     }
   ],
   "schedule": [

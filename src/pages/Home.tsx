@@ -90,8 +90,8 @@ export default Home;
 
 const StyledHome = styled.div<{ closeCheck: boolean }>`
   position: relative;
-  width: 100%;
   display: flex;
+  width: 100%;
   height: 100vh;
   overflow-x: hidden;
 
@@ -149,12 +149,12 @@ const StyledHome = styled.div<{ closeCheck: boolean }>`
   }
   .check-box {
     position: relative;
+    left: ${({ closeCheck }) => (closeCheck ? '100%' : '0%')};
     width: 50%;
-    background-color: ${maincolor};
     z-index: 10;
+    background-color: ${maincolor};
     color: white;
     transition: 2s ease;
-    left: ${({ closeCheck }) => (closeCheck ? '100%' : '0%')};
   }
   @media screen and (max-width: 875px) {
     .main-box {
@@ -169,9 +169,10 @@ const OpenFade = styled.div<{ openFade: boolean }>`
   position: absolute;
   left: 100%;
   top: 0;
-  z-index: 10;
   width: 100%;
   height: 100%;
+  z-index: 10;
+
   background-color: ${maincolor};
   transition: 1.2s ease-in;
   transform: translateX(${({ openFade }) => (openFade ? '0%' : '-100%')});

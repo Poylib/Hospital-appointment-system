@@ -87,11 +87,11 @@ const ButtonBox = styled.div`
     margin: 5px;
     padding: 10px 0;
     width: 40%;
-    color: white;
-    font-size: 20px;
     background-color: ${maincolor};
     border: none;
     border-radius: 14px;
+    font-size: 20px;
+    color: white;
     cursor: pointer;
   }
 `;

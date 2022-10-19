@@ -3,7 +3,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { maincolor } from '../../theme';
 
-const TimeTable = ({ schedule, setSelected, selected }) => {
+interface TimeProps {
+  schedule: [];
+  setSelected: React.Dispatch<React.SetStateAction<[]>>;
+  selected: string;
+}
+
+const TimeTable = ({ schedule, setSelected, selected }: TimeProps) => {
   const arr = ['10 : 00', '11 : 00', '12 : 00', '13 : 00', '14 : 00', '15 : 00', '16 : 00', '17 : 00', '18 : 00'];
   const navigate = useNavigate();
   const params = useParams();
@@ -63,22 +69,22 @@ const StyledTimeTable = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 140px;
-  margin-left: 15px;
   width: 50%;
+  min-width: 140px;
   height: 80%;
+  margin-left: 15px;
   overflow: scroll;
   li {
-    font-size: 30px;
-    margin: 10px 0;
     width: 100%;
-    text-align: center;
-    padding: 10px;
     height: 50px;
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
+    font-size: 30px;
     &:hover {
+      border-radius: 10px;
       color: white;
       background-color: ${maincolor};
-      border-radius: 10px;
       cursor: pointer;
     }
   }
