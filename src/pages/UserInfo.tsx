@@ -93,7 +93,6 @@ export default UserInfo;
 const StyledUserInfo = styled.div`
   padding: 60px 30px;
   height: 100vh;
-  width: 100vw;
 `;
 
 const FormBox = styled.div`

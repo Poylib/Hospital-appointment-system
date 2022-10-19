@@ -67,6 +67,7 @@ const StyledTimeTable = styled.ul`
   width: 50%;
   min-width: 140px;
   height: 80%;
+  max-height: 700px;
   margin-left: 15px;
   overflow: scroll;
   li {
