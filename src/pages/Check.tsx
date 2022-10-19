@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import Clientname from '../components/check/Clientname';
+import Client from '../components/check/Client';
 import { maincolor } from '../theme';
 
 const Check = () => {
@@ -15,7 +15,7 @@ const Check = () => {
     <StyledCheck //
       openFade={openFade}
     >
-      {params.id === 'clientname' ? <Clientname page={'name'} /> : <Clientname page={'number'} />}
+      {params.id === 'clientname' ? <Client page={'name'} /> : <Client page={'number'} />}
     </StyledCheck>
   );
 };

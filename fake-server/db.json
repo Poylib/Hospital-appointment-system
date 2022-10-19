@@ -11,16 +11,6 @@
       "reservationNum": 224812140
     },
     {
-      "id": 3,
-      "name": "김예약",
-      "phoneNumber": "01012341234",
-      "noshow": false,
-      "reservationDate": "2022-10-31",
-      "reservationTime": "1100",
-      "reservation": "counseling",
-      "reservationNum": 224812840
-    },
-    {
       "id": 4,
       "name": "김병원",
       "phoneNumber": "01012344321",

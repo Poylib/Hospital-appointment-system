@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { maincolor } from '../../theme';
-import { OpenFade } from './Clientname';
+import { OpenFade } from './Client';
 const CheckPage = ({ viewInfo }) => {
   const { id, name, phoneNumber, reservationNum, reservation, reservationDate, reservationTime } = viewInfo;
   const navigate = useNavigate();

@@ -6,9 +6,8 @@ import { basecolor, maincolor } from '../../theme';
 import { userCheck, ChildProps } from '../../util/interface';
 import axios from 'axios';
 import CheckPage from './CheckPage';
-import { userInfo } from 'os';
 
-const Clientname = ({ page }: ChildProps) => {
+const Client = ({ page }: ChildProps) => {
   const [openFade, setOpenFade] = useState(false);
   const [name, setName] = useState('');
   const [phoneCheck, setPhoneCheck] = useState('');
@@ -38,7 +37,6 @@ const Clientname = ({ page }: ChildProps) => {
           if (obj.name === name && obj.phoneNumber === phoneCheck) setViewInfo(obj);
         });
       } else {
-        console.log(typeof reservationCheck);
         data.map((obj: userCheck) => {
           if (obj.reservationNum === Number(reservationCheck)) setViewInfo(obj);
         });
@@ -83,7 +81,7 @@ const Clientname = ({ page }: ChildProps) => {
     </>
   );
 };
-export default Clientname;
+export default Client;
 
 const StyledClientName = styled.div`
   display: flex;
@@ -93,7 +91,7 @@ const StyledClientName = styled.div`
   background-color: white;
   padding: 15px;
   width: 60vh;
-  height: 50vh;
+  height: 60vh;
   border-radius: 24px;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   .header {
