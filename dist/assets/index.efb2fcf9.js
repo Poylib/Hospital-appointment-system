@@ -321,6 +321,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   width: 50%;
   min-width: 140px;
   height: 80%;
+  max-height: 700px;
   margin-left: 15px;
   overflow: scroll;
   li {
@@ -549,7 +550,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,XN=()=>{const[e,t]=T.exports.useState(""),[n,r]=T.exports.useState(""),[o,i]=T.exports.useState(0),[a,u]=T.exports.useState(!1),s=Ai(),c=Id().id.split("-"),f=`${c[2]}\uB144 ${c[1]}\uC6D4 ${c[0]}\uC77C`,p=`${c[4]} : 00`,m=!1;let h="";return c[3]==="clinic"?h="\uC9C4\uB8CC":c[3]==="counseling"?h="\uC0C1\uB2F4":h="\uAC80\uC9C4",O(GN,{children:H(JN,{children:[O("h1",{children:"\uAC1C\uC778\uC815\uBCF4 \uC785\uB825"}),H("form",{onSubmit:async S=>{const y=Math.floor(Math.random()*1e9);S.preventDefault();try{const{data:d}=await Ve.get("http://localhost:4000/users");d.map(v=>{v.name===e&&v.phoneNumber===n?(v.noshow&&(alert("\uB178\uC1FC \uC774\uB825\uC774 \uC788\uC5B4 \uC608\uC57D\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4"),s("/pre-onboarding-lululab/")),alert("\uC774\uBBF8 \uC608\uC57D\uD55C \uC77C\uC815\uC774 \uC788\uC2B5\uB2C8\uB2E4. \uC911\uBCF5 \uC608\uC57D\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4"),s("/pre-onboarding-lululab/")):u(!a)}),u(!a)}catch(d){console.log(d)}await Ve.post("http://localhost:4000/users",{reservationDate:f,reservationTime:p,reservation:h,phoneNumber:n,noshow:m,name:e,reservationNum:y}),i(y)},children:[O("input",{placeholder:"\uC774\uB984",onChange:S=>t(S.target.value),required:!0}),O("input",{placeholder:"\uC804\uD654\uBC88\uD638",onChange:S=>r(S.target.value),required:!0}),H(ZN,{children:[H("div",{children:[O("span",{children:"\uC608\uC57D\uB0B4\uC6A9"}),O("span",{children:h})]}),H("div",{children:[O("span",{children:"\uC608\uC57D\uC77C\uC790"}),O("span",{children:f})]}),H("div",{children:[O("span",{children:"\uC608\uC57D\uC2DC\uAC04"}),O("span",{children:p})]})]}),o?H("div",{className:"after-box",children:[O("span",{children:"\uC608\uC57D\uBC88\uD638"}),O("span",{children:o})]}):O("button",{children:"\uC608\uC57D\uD558\uAE30"}),O("h2",{children:"\uC608\uC57D \uC77C\uC790\uC5D0 \uB178\uC1FC\uD560 \uACBD\uC6B0 \uC11C\uBE44\uC2A4 \uC774\uC6A9\uC774 \uC81C\uD55C\uB429\uB2C8\uB2E4."})]})]})})},GN=tt.div`
   padding: 60px 30px;
   height: 100vh;
-  width: 100vw;
 `,JN=tt.div`
   display: flex;
   flex-direction: column;
