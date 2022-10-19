@@ -2,12 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { maincolor } from '../../theme';
-
-interface TimeProps {
-  schedule: [];
-  setSelected: React.Dispatch<React.SetStateAction<[]>>;
-  selected: string;
-}
+import { TimeProps, ScheduleArr } from '../../util/interface';
 
 const TimeTable = ({ schedule, setSelected, selected }: TimeProps) => {
   const arr = ['10 : 00', '11 : 00', '12 : 00', '13 : 00', '14 : 00', '15 : 00', '16 : 00', '17 : 00', '18 : 00'];

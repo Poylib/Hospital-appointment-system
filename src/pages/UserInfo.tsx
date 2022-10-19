@@ -11,7 +11,7 @@ const UserInfo = () => {
   const [randomNum, setRandomNum] = useState(0);
   const [submitied, setSubmited] = useState(false);
   const navigate = useNavigate();
-  const params: Readonly<Params<string>> = useParams();
+  const params: Readonly<Params<string> | any> = useParams();
   const paramsArr = params.id.split('-');
   const reservationDate = `${paramsArr[2]}년 ${paramsArr[1]}월 ${paramsArr[0]}일`;
   const reservationTime = `${paramsArr[4]} : 00`;
