@@ -1,27 +1,52 @@
-import { time } from 'console';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { maincolor } from '../../theme';
 
 const TimeTable = ({ schedule }) => {
   const arr = ['10 : 00', '11 : 00', '12 : 00', '13 : 00', '14 : 00', '15 : 00', '16 : 00', '17 : 00', '18 : 00'];
+  const navigate = useNavigate();
   const [timeLine, setTimeLine] = useState(arr);
 
   useEffect(() => {
-    const newTimeLine = [...arr];
+    const newTimeLine = arrArrangeFunc(arr);
+    setTimeLine(newTimeLine);
+  }, [schedule]);
+
+  const clickHandle: React.MouseEventHandler<HTMLLIElement> = e => {
+    if (e.target instanceof HTMLElement) {
+      const targetNum: number = Number(e.target.id);
+      const newArr = arrArrangeFunc(arr);
+      newArr[targetNum] = '예약하기';
+      setTimeLine(newArr);
+
+      if (e.target.innerHTML === '예약하기') {
+        navigate(`/infoinput/${targetNum}`);
+      }
+    }
+  };
+
+  const arrArrangeFunc = (arr: string[]) => {
+    const newArr = [...arr];
     for (let i = arr.length - 1; i > 0; i--) {
       for (let j = 0; j < schedule.length; j++) {
         if (arr[i].includes(schedule[j].time)) {
-          newTimeLine.splice(i, 1);
+          newArr.splice(i, 1);
         }
       }
     }
-    setTimeLine(newTimeLine);
-  }, [schedule]);
+    return newArr;
+  };
+
   return (
     <StyledTimeTable>
       {timeLine.map((time, index) => {
         return (
-          <li key={`${time}_${index}`} onClick={() => console.log(time)}>
+          <li //
+            key={`${time}_${index}`}
+            id={`${index}`}
+            onClick={clickHandle}
+          >
             {time}
           </li>
         );
@@ -38,14 +63,22 @@ const StyledTimeTable = styled.ul`
   flex-direction: column;
   align-items: center;
   min-width: 140px;
+  margin-left: 15px;
   width: 50%;
-  height: 100%;
+  height: 80%;
   overflow: scroll;
   li {
-    /* position: absolute; */
     font-size: 30px;
     margin: 10px 0;
-    padding: 10%;
-    height: 40px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    height: 50px;
+    &:hover {
+      color: white;
+      background-color: ${maincolor};
+      border-radius: 10px;
+      cursor: pointer;
+    }
   }
 `;

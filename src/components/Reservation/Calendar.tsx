@@ -10,6 +10,7 @@ import { maincolor } from '../../theme';
 const Calendar = () => {
   const [schedule, setSchedule] = useState([]);
   const [startDate, setStartDate] = useState();
+  const today = new Date();
   const dateHandler = async (e: Date) => {
     setStartDate(e);
     const checkedDate = e.toLocaleDateString().split('/').join('');
@@ -28,24 +29,22 @@ const Calendar = () => {
     }
   };
   return (
-    <>
-      <StyledCalendar>
-        <CalendarBox>
-          <DatePicker //
-            onChange={dateHandler}
-            dateFormatCalendar='yyyy년 M월'
-            showPreviousMonths={false}
-            useShortMonthInDropdown={false}
-            locale={ko}
-            minDate={new Date()}
-            selected={startDate}
-            inline
-            disabledKeyboardNavigation
-          />
-        </CalendarBox>
-        <TimeTable schedule={schedule} />
-      </StyledCalendar>
-    </>
+    <StyledCalendar>
+      <CalendarBox>
+        <DatePicker //
+          onChange={dateHandler}
+          dateFormatCalendar='yyyy년 M월'
+          showPreviousMonths={false}
+          useShortMonthInDropdown={false}
+          locale={ko}
+          minDate={today.setDate(today.getDate() + 1)}
+          selected={startDate}
+          inline
+          disabledKeyboardNavigation
+        />
+      </CalendarBox>
+      <TimeTable schedule={schedule} />
+    </StyledCalendar>
   );
 };
 export default Calendar;
@@ -56,7 +55,7 @@ const StyledCalendar = styled.div`
   align-items: center;
   width: 100%;
   min-width: 550px;
-  height: 100%;
+  height: 70vh;
   .react-datepicker {
     padding: 30px 20px;
     border: none;
@@ -101,6 +100,7 @@ const StyledCalendar = styled.div`
         .react-datepicker__day {
           margin: 3%;
           color: #606060;
+          /* color: blue; */
           font-weight: 600;
           font-size: 20px;
         }
@@ -108,16 +108,15 @@ const StyledCalendar = styled.div`
         .react-datepicker__day--weekend {
           color: #e83667;
         }
-        //오늘 날짜 선택 클래스
-        .react-datepicker__day--today {
-          border-radius: 1rem;
-          color: ${maincolor};
-        }
         //오늘 날짜 이전, 선택불가 날짜 클래스
         .react-datepicker__day--disabled {
           color: #cacaca;
         }
         //시작 날짜, 종료 날짜 사이 중간날짜 선택완료
+        .react-datepicker__day--selected {
+          background-color: ${maincolor};
+          color: white;
+        }
       }
     }
   }

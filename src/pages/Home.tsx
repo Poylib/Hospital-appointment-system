@@ -23,7 +23,7 @@ const Home = () => {
   const moveReservationHandler: React.MouseEventHandler<HTMLHeadingElement> = e => {
     setCloseCheck(true);
     setTimeout(() => {
-      if (e.target instanceof HTMLHeadingElement) navigate(`/reservation/${e.target.id}`);
+      if (e.target instanceof HTMLHeadingElement) navigate(`/dateinput/${e.target.id}`);
     }, 700);
   };
 
