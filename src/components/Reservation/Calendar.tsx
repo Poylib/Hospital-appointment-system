@@ -12,7 +12,7 @@ const Calendar = () => {
   const [startDate, setStartDate] = useState();
   const [selected, setSelected] = useState('');
   const today = new Date();
-  const dateHandler = async (e: Date) => {
+  const dateHandler = async (e: Date | any) => {
     const checkedDate = e.toLocaleDateString().split('/').join('-');
     setStartDate(e);
     setSelected(checkedDate);

@@ -14,3 +14,12 @@ export interface userCheck {
 export interface ChildProps {
   page: ReactNode;
 }
+
+export interface TimeProps {
+  schedule: ScheduleArr[];
+  setSelected: React.Dispatch<React.SetStateAction<[]> | string | any>;
+  selected: string;
+}
+export interface ScheduleArr {
+  time: string;
+}
