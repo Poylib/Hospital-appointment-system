@@ -3,19 +3,17 @@ import styled from 'styled-components';
 import { fadeIn } from '../../util/Animation';
 import { BsFilePerson, BsPhone, BsList } from 'react-icons/bs';
 import { basecolor, maincolor } from '../../theme';
-import { numCheck } from '../../util/interface';
+import { userCheck } from '../../util/interface';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { listenerCount } from 'process';
 export type ChildProps = {
   page: ReactNode;
 };
 const Clientname = ({ page }: ChildProps) => {
   const [openFade, setOpenFade] = useState(false);
   const [name, setName] = useState('');
-  const [phoneNum, setPhoneNum] = useState('');
-  const [reservationNum, setReservationNum] = useState('');
-  const navigate = useNavigate();
+  const [phoneCheck, setPhoneCheck] = useState('');
+  const [reservationCheck, setReservationCheck] = useState(0);
+  const [viewInfo, setViewInfo] = useState({});
   useEffect(() => {
     setTimeout(() => {
       setOpenFade(true);
@@ -24,49 +22,53 @@ const Clientname = ({ page }: ChildProps) => {
 
   const submitHandler: React.FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
-    if (page === 'name') {
-      try {
-        const { data } = await axios.get('http://localhost:4000/numuser');
-        let reservationNum = 0;
-        data.map((obj: numCheck) => {
-          if (obj.name === name && obj.phoneNumber === phoneNum) reservationNum = obj.reservationNum;
+    try {
+      const { data } = await axios.get('http://localhost:4000/users');
+      if (page === 'name') {
+        data.map((obj: userCheck) => {
+          if (obj.name === name && obj.phoneNumber === phoneCheck) setViewInfo({ ...obj });
+          // if (obj.name === name && obj.phoneNumber === phoneCheck) console.log('check');
         });
-        if (reservationNum) navigate(`/reservation/checkpage/${reservationNum}`);
-        else alert('회원정보가 없습니다');
-      } catch (error) {
-        console.log(error);
+      } else {
+        data.map((obj: userCheck) => {
+          if (obj.reservationNum === reservationCheck) setViewInfo(obj);
+        });
       }
+      console.log(viewInfo);
+    } catch (error) {
+      console.log(error);
     }
   };
-
   return (
     <>
       {openFade && (
         <OpenFade>
           <StyledClientName>
             <h1 className='header'>예약조회</h1>
-            <form onSubmit={submitHandler}>
-              {page === 'name' ? (
-                <>
-                  <div className='input-box'>
-                    <BsFilePerson className='icon' size='26px' />
-                    <input type='text' placeholder='이름' onChange={e => setName(e.target.value)} />
-                  </div>
-                  <div className='input-box'>
-                    <BsPhone className='icon' size='26px' />
-                    <input type='number' placeholder='전화번호' onChange={e => setPhoneNum(e.target.value)} />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className='input-box'>
-                    <BsList className='icon' size='26px' />
-                    <input type='number' placeholder='예약번호' onChange={e => setReservationNum(e.target.value)} />
-                  </div>
-                </>
-              )}
-              <button>조회</button>
-            </form>
+            {
+              <form onSubmit={submitHandler}>
+                {page === 'name' ? (
+                  <>
+                    <div className='input-box'>
+                      <BsFilePerson className='icon' size='26px' />
+                      <input type='text' placeholder='이름' onChange={e => setName(e.target.value)} />
+                    </div>
+                    <div className='input-box'>
+                      <BsPhone className='icon' size='26px' />
+                      <input type='number' placeholder='전화번호' onChange={e => setPhoneCheck(e.target.value)} />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className='input-box'>
+                      <BsList className='icon' size='26px' />
+                      <input type='number' placeholder='예약번호' onChange={e => setReservationCheck(e.target.value)} />
+                    </div>
+                  </>
+                )}
+                <button>조회</button>
+              </form>
+            }
           </StyledClientName>
         </OpenFade>
       )}

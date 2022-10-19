@@ -14,6 +14,7 @@ const Calendar = () => {
         onChange={dateHandler}
         dateFormatCalendar='yyyy년 M월'
         showPreviousMonths={false}
+        useShortMonthInDropdown={false}
         locale={ko}
         minDate={new Date()}
         inline
