@@ -73,7 +73,7 @@ const Home = () => {
                 <h1>예약조회</h1>
                 <div className='text-box'>
                   <span>
-                    로그인 또는 예약정보로
+                    개인정보 또는 예약번호로
                     <br /> 예약 내역을 조회할 수 있습니다
                   </span>
                 </div>

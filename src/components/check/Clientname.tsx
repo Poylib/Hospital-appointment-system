@@ -1,19 +1,28 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { fadeIn } from '../../util/Animation';
 import { BsFilePerson, BsPhone, BsList } from 'react-icons/bs';
 import { basecolor, maincolor } from '../../theme';
-import { userCheck } from '../../util/interface';
+import { userCheck, ChildProps } from '../../util/interface';
 import axios from 'axios';
-export type ChildProps = {
-  page: ReactNode;
-};
+import CheckPage from './CheckPage';
+import { userInfo } from 'os';
+
 const Clientname = ({ page }: ChildProps) => {
   const [openFade, setOpenFade] = useState(false);
   const [name, setName] = useState('');
   const [phoneCheck, setPhoneCheck] = useState('');
-  const [reservationCheck, setReservationCheck] = useState(0);
-  const [viewInfo, setViewInfo] = useState({});
+  const [reservationCheck, setReservationCheck] = useState<string | number>(0);
+  const [viewInfo, setViewInfo] = useState<userCheck>({
+    id: 0,
+    name: '',
+    phoneNumber: '',
+    noshow: false,
+    reservation: '',
+    reservationDate: '',
+    reservationTime: '',
+    reservationNum: 0,
+  });
   useEffect(() => {
     setTimeout(() => {
       setOpenFade(true);
@@ -26,15 +35,14 @@ const Clientname = ({ page }: ChildProps) => {
       const { data } = await axios.get('http://localhost:4000/users');
       if (page === 'name') {
         data.map((obj: userCheck) => {
-          if (obj.name === name && obj.phoneNumber === phoneCheck) setViewInfo({ ...obj });
-          // if (obj.name === name && obj.phoneNumber === phoneCheck) console.log('check');
+          if (obj.name === name && obj.phoneNumber === phoneCheck) setViewInfo(obj);
         });
       } else {
+        console.log(typeof reservationCheck);
         data.map((obj: userCheck) => {
-          if (obj.reservationNum === reservationCheck) setViewInfo(obj);
+          if (obj.reservationNum === Number(reservationCheck)) setViewInfo(obj);
         });
       }
-      console.log(viewInfo);
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +53,9 @@ const Clientname = ({ page }: ChildProps) => {
         <OpenFade>
           <StyledClientName>
             <h1 className='header'>예약조회</h1>
-            {
+            {viewInfo.name ? (
+              <CheckPage viewInfo={viewInfo} />
+            ) : (
               <form onSubmit={submitHandler}>
                 {page === 'name' ? (
                   <>
@@ -59,16 +69,14 @@ const Clientname = ({ page }: ChildProps) => {
                     </div>
                   </>
                 ) : (
-                  <>
-                    <div className='input-box'>
-                      <BsList className='icon' size='26px' />
-                      <input type='number' placeholder='예약번호' onChange={e => setReservationCheck(e.target.value)} />
-                    </div>
-                  </>
+                  <div className='input-box'>
+                    <BsList className='icon' size='26px' />
+                    <input type='number' placeholder='예약번호' onChange={e => setReservationCheck(e.target.value)} />
+                  </div>
                 )}
                 <button>조회</button>
               </form>
-            }
+            )}
           </StyledClientName>
         </OpenFade>
       )}
