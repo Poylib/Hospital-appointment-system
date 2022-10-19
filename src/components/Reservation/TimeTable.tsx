@@ -19,22 +19,33 @@ const TimeTable = ({ schedule }) => {
   }, [schedule]);
   return (
     <StyledTimeTable>
-      <ul>
-        {timeLine.map((time, index) => {
-          return (
-            <li key={`${time}_${index}`} onClick={() => console.log(time)}>
-              {time}
-            </li>
-          );
-        })}
-      </ul>
+      {timeLine.map((time, index) => {
+        return (
+          <li key={`${time}_${index}`} onClick={() => console.log(time)}>
+            {time}
+          </li>
+        );
+      })}
     </StyledTimeTable>
   );
 };
 
 export default TimeTable;
 
-const StyledTimeTable = styled.div`
+const StyledTimeTable = styled.ul`
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  min-width: 140px;
+  width: 50%;
+  height: 100%;
+  overflow: scroll;
+  li {
+    /* position: absolute; */
+    font-size: 30px;
+    margin: 10px 0;
+    padding: 10%;
+    height: 40px;
+  }
 `;

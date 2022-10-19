@@ -5,6 +5,7 @@ import { ko } from 'date-fns/esm/locale';
 import styled from 'styled-components';
 import TimeTable from './TimeTable';
 import axios from 'axios';
+import { maincolor } from '../../theme';
 
 const Calendar = () => {
   const [schedule, setSchedule] = useState([]);
@@ -27,48 +28,60 @@ const Calendar = () => {
     }
   };
   return (
-    <StyledCalendar>
-      <DatePicker //
-        onChange={dateHandler}
-        dateFormatCalendar='yyyy년 M월'
-        showPreviousMonths={false}
-        useShortMonthInDropdown={false}
-        locale={ko}
-        minDate={new Date()}
-        selected={startDate}
-        inline
-        disabledKeyboardNavigation
-      />
-      <TimeTable schedule={schedule} />
-    </StyledCalendar>
+    <>
+      <StyledCalendar>
+        <CalendarBox>
+          <DatePicker //
+            onChange={dateHandler}
+            dateFormatCalendar='yyyy년 M월'
+            showPreviousMonths={false}
+            useShortMonthInDropdown={false}
+            locale={ko}
+            minDate={new Date()}
+            selected={startDate}
+            inline
+            disabledKeyboardNavigation
+          />
+        </CalendarBox>
+        <TimeTable schedule={schedule} />
+      </StyledCalendar>
+    </>
   );
 };
 export default Calendar;
 
 const StyledCalendar = styled.div`
   display: flex;
-  justify-content: space-around;
-  width: 80%;
-
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  min-width: 550px;
+  height: 100%;
   .react-datepicker {
     padding: 30px 20px;
     border: none;
     border-right: 1px solid #eaeaea;
-    font-size: 1.7rem;
+    font-size: 1rem;
+    width: 100%;
     color: #606060;
+    .react-datepicker__current-month {
+      font-size: 20px;
+      color: white;
+      padding: 10px;
+    }
     .react-datepicker__navigation--previous {
       left: 20px;
-      top: 29px;
+      top: 50%;
     }
     .react-datepicker__navigation--next {
       right: 20px;
-      top: 29px;
+      top: 50%;
     }
     .react-datepicker__month-container {
-      width: 360px;
+      width: 100%;
       .react-datepicker__header {
-        width: 350px;
-        background-color: white;
+        width: 100%;
+        background-color: ${maincolor};
         border: none;
         .react-datepicker__current-month {
           margin-bottom: 10px;
@@ -76,20 +89,20 @@ const StyledCalendar = styled.div`
         .react-datepicker__day-names {
           margin: 0;
           .react-datepicker__day-name {
-            margin: 0.5rem;
-            color: #606060;
+            margin: 3%;
+            color: white;
             font-weight: 600;
+            font-size: 20px;
           }
         }
       }
       .react-datepicker__month {
-        width: 350px;
-        margin: 0;
         // 날짜 숫자 클래스
         .react-datepicker__day {
-          margin: 0.4rem 0.5rem;
+          margin: 3%;
           color: #606060;
           font-weight: 600;
+          font-size: 20px;
         }
         //주말 클래스
         .react-datepicker__day--weekend {
@@ -98,7 +111,7 @@ const StyledCalendar = styled.div`
         //오늘 날짜 선택 클래스
         .react-datepicker__day--today {
           border-radius: 1rem;
-          color: #63a1ff;
+          color: ${maincolor};
         }
         //오늘 날짜 이전, 선택불가 날짜 클래스
         .react-datepicker__day--disabled {
@@ -108,4 +121,9 @@ const StyledCalendar = styled.div`
       }
     }
   }
+`;
+
+const CalendarBox = styled.div`
+  width: 50%;
+  min-width: 480px;
 `;

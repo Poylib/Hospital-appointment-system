@@ -18,6 +18,7 @@ const StyledHeader = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  max-width: 1440px;
   z-index: 99;
   background-color: inherits;
   img {
