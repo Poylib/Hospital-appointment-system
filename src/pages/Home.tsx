@@ -172,7 +172,6 @@ const OpenFade = styled.div<{ openFade: boolean }>`
   width: 100%;
   height: 100%;
   z-index: 10;
-
   background-color: ${maincolor};
   transition: 1.2s ease-in;
   transform: translateX(${({ openFade }) => (openFade ? '0%' : '-100%')});
