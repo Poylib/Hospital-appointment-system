@@ -21,163 +21,34 @@
       "reservationNum": 224472841
     },
     {
-      "id": 5,
-      "name": "위워크",
-      "phoneNumber": "01012344321",
-      "noshow": false,
-      "reservation": "counseling",
-      "reservationDate": "10-26-2022",
-      "reservationTime": "11 : 00",
-      "reservationNum": 224432849
-    },
-    {
-      "id": 6,
-      "name": "김박최",
-      "phoneNumber": "01012344320",
-      "noshow": false,
-      "reservation": "clinic",
-      "reservationDate": "10-20-2022",
-      "reservationTime": "13 : 00",
-      "reservationNum": 224432850
-    },
-    {
-      "reservationDate": "2022년 28월 10일",
-      "reservationTime": "12 : 00",
-      "noshow": false,
-      "reservation": "검진",
-      "phoneNumber": "01012344321",
-      "name": "십일예약",
-      "reservationNum": 273643993,
-      "id": 7
-    },
-    {
-      "reservationDate": "2022년 28월 10일",
-      "reservationTime": "12 : 00",
-      "reservation": "검진",
-      "phoneNumber": "01012344321",
-      "name": "정예원",
-      "reservationNum": 273643993,
-      "id": 7
-    },
-    {
-      "reservationDate": "2022년 21월 10일",
-      "reservationTime": "14 : 00",
-      "reservation": "검진",
-      "phoneNumber": "010",
-      "noshow": false,
-      "name": "ㅊㅊ",
-      "reservationNum": 329384589,
-      "id": 8
-    },
-    {
-      "reservationDate": "2022년 21월 10일",
-      "reservationTime": "14 : 00",
-      "reservation": "검진",
-      "phoneNumber": "1111",
-      "noshow": false,
-      "name": "정예원",
-      "reservationNum": 311839272,
-      "id": 9
-    },
-    {
-      "reservationDate": "2022년 21월 10일",
-      "reservationTime": "14 : 00",
-      "reservation": "검진",
-      "phoneNumber": "01012341234",
-      "noshow": false,
-      "name": "정예원",
-      "reservationNum": 57316263,
-      "id": 10
-    },
-    {
-      "reservationDate": "2022년 5월 11일",
+      "reservationDate": "2022년 27월 10일",
       "reservationTime": "15 : 00",
-      "reservation": "검진",
-      "phoneNumber": "01012341234",
-      "noshow": false,
-      "name": "예약자",
-      "reservationNum": 804683023,
-      "id": 11
-    },
-    {
-      "reservationDate": "2022년 5월 11일",
-      "reservationTime": "15 : 00",
-      "reservation": "검진",
-      "phoneNumber": "01012341234",
-      "noshow": false,
-      "name": "예약자",
-      "reservationNum": 254491705,
-      "id": 12
-    },
-    {
-      "reservationDate": "2022년 29월 10일",
-      "reservationTime": "14 : 00",
-      "reservation": "검진",
-      "phoneNumber": "010",
-      "noshow": true,
-      "name": "김처음",
-      "reservationNum": 977202682,
-      "id": 14
-    },
-    {
-      "reservationDate": "2022년 29월 10일",
-      "reservationTime": "15 : 00",
-      "reservation": "검진",
-      "phoneNumber": "1",
-      "noshow": false,
-      "name": "감",
-      "reservationNum": 925985816,
-      "id": 16
-    },
-    {
-      "reservationDate": "2022년 29월 10일",
-      "reservationTime": "14 : 00",
-      "reservation": "검진",
-      "phoneNumber": "010",
-      "noshow": false,
-      "name": "김처음",
-      "reservationNum": 562640941,
-      "id": 17
-    },
-    {
-      "reservationDate": "2022년 26월 10일",
-      "reservationTime": "15 : 00",
-      "reservation": "상담",
-      "phoneNumber": "d",
-      "noshow": false,
-      "name": "d",
-      "reservationNum": 988920536,
-      "id": 18
-    },
-    {
-      "reservationDate": "2022년 28월 10일",
-      "reservationTime": "15 : 00",
-      "reservation": "검진",
-      "phoneNumber": "d",
-      "noshow": false,
-      "name": "d",
-      "reservationNum": 638856733,
-      "id": 19
-    },
-    {
-      "reservationDate": "2022년 21월 10일",
-      "reservationTime": "14 : 00",
       "reservation": "검진",
       "phoneNumber": "01012344321",
       "noshow": false,
       "name": "김병원",
-      "reservationNum": 787679065,
-      "id": 20
+      "reservationNum": 284734143,
+      "id": 9
     },
     {
-      "reservationDate": "2022년 29월 10일",
-      "reservationTime": "17 : 00",
+      "reservationDate": "2022년 28월 10일",
+      "reservationTime": "12 : 00",
       "reservation": "검진",
-      "phoneNumber": "01012340000",
+      "phoneNumber": "01012344321",
       "noshow": false,
-      "name": "박찬영",
-      "reservationNum": 142104143,
-      "id": 21
+      "name": "김두번",
+      "reservationNum": 192619328,
+      "id": 11
+    },
+    {
+      "reservationDate": "2022년 27월 10일",
+      "reservationTime": "15 : 00",
+      "reservation": "검진",
+      "phoneNumber": "01012341234",
+      "noshow": false,
+      "name": "김정보",
+      "reservationNum": 378274660,
+      "id": 12
     }
   ],
   "schedule": [

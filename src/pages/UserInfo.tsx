@@ -9,14 +9,13 @@ const UserInfo = () => {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [randomNum, setRandomNum] = useState(0);
-  const [submitied, setSubmited] = useState(false);
   const navigate = useNavigate();
   const params: Readonly<Params<string> | any> = useParams();
   const paramsArr = params.id.split('-');
   const reservationDate = `${paramsArr[2]}년 ${paramsArr[1]}월 ${paramsArr[0]}일`;
   const reservationTime = `${paramsArr[4]} : 00`;
-  const noshow = false;
   let reservation = '';
+  const noshow = false;
   if (paramsArr[3] === 'clinic') reservation = '진료';
   else if (paramsArr[3] === 'counseling') reservation = '상담';
   else reservation = '검진';
@@ -26,29 +25,34 @@ const UserInfo = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get('http://localhost:4000/users');
-      data.map((el: userCheck) => {
-        if (el.name === name && el.phoneNumber === phoneNumber) {
-          if (el.noshow) {
-            alert('노쇼 이력이 있어 예약할 수 없습니다');
+      for (let i = 0; i < data.length; i++) {
+        console.log(data[i].name);
+        if (data[i].name === name && data[i].phoneNumber === phoneNumber) {
+          if (data[i].noshow) {
+            alert('노쇼 이력이 있어 예약할 수 없습니다.');
             navigate('/pre-onboarding-lululab/');
+            break;
+          } else {
+            alert('이미 예약한 일정이 있습니다. 중복 예약할 수 없습니다.');
+            navigate('/pre-onboarding-lululab/');
+            break;
           }
-          alert('이미 예약한 일정이 있습니다. 중복 예약할 수 없습니다');
-          navigate('/pre-onboarding-lululab/');
-        } else setSubmited(!submitied);
+        }
+      }
+      await axios.post<userCheck, AxiosResponse<userCheck>, userCheck>('http://localhost:4000/users', {
+        reservationDate,
+        reservationTime,
+        reservation,
+        phoneNumber,
+        noshow,
+        name,
+        reservationNum,
       });
-      setSubmited(!submitied);
     } catch (error) {
       console.log(error);
+      console.log('get error');
     }
-    await axios.post<userCheck, AxiosResponse<userCheck>, userCheck>('http://localhost:4000/users', {
-      reservationDate,
-      reservationTime,
-      reservation,
-      phoneNumber,
-      noshow,
-      name,
-      reservationNum,
-    });
+
     setRandomNum(reservationNum);
   };
 

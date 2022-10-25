@@ -17,7 +17,8 @@ const TimeTable = ({ schedule, setSelected, selected }: TimeProps) => {
 
   const clickHandle: React.MouseEventHandler<HTMLLIElement> = e => {
     if (e.target instanceof HTMLElement) {
-      setSelected(`${selected}-${params.id}-${e.target.innerHTML.split(' : ')[0]}`);
+      const inputSelect = `${selected}-${params.id}-${e.target.innerHTML.split(' : ')[0]}`;
+      setSelected(inputSelect);
       const targetNum: number = Number(e.target.id);
       const newArr = arrArrangeFunc(arr);
       newArr[targetNum] = '예약하기';
