@@ -39,7 +39,7 @@ const Calendar = () => {
           showPreviousMonths={false}
           useShortMonthInDropdown={false}
           locale={ko}
-          minDate={today.setDate(today.getDate() + 1)}
+          // minDate={today.setDate(today.getDate() + 1)} 타입에러 해결 못함
           selected={startDate}
           inline
           disabledKeyboardNavigation
