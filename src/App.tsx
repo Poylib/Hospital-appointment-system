@@ -12,7 +12,7 @@ function App() {
       <GlobalStyle />
       <Header />
       <Routes>
-        <Route path='/pre-onboarding-lululab/' element={<Home />} />
+        <Route path='/' element={<Home />} />
         <Route path='/dateinput/:id' element={<Reservation />} />
         <Route path='/infoinput/:id' element={<UserInfo />} />
         <Route path='/check/:id' element={<Check />} />
