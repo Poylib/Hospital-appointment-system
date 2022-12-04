@@ -4,7 +4,7 @@
       "id": 1,
       "name": "예약자",
       "phoneNumber": "01012341234",
-      "noshow": false,
+      "checked": false,
       "reservation": "clinic",
       "reservationDate": "10-28-2022",
       "reservationTime": "10 : 00",

@@ -4,7 +4,7 @@ import logoImage from '../../assets/logo.png';
 const Header = () => {
   return (
     <StyledHeader>
-      <Link to='/pre-onboarding-lululab/'>
+      <Link to='/'>
         <img src={logoImage} alt='로고 이미지' />
       </Link>
     </StyledHeader>

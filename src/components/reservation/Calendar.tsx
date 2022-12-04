@@ -30,6 +30,7 @@ const Calendar = () => {
       console.log(error);
     }
   };
+
   return (
     <StyledCalendar>
       <CalendarBox>
@@ -39,7 +40,7 @@ const Calendar = () => {
           showPreviousMonths={false}
           useShortMonthInDropdown={false}
           locale={ko}
-          // minDate={today.setDate(today.getDate() + 1)} 타입에러 해결 못함
+          minDate={today}
           selected={startDate}
           inline
           disabledKeyboardNavigation
@@ -98,23 +99,21 @@ const StyledCalendar = styled.div`
         }
       }
       .react-datepicker__month {
-        // 날짜 숫자 클래스
         .react-datepicker__day {
           margin: 3%;
-          /* color: blue; */
           font-weight: 600;
           font-size: 20px;
           color: #606060;
         }
-        //주말 클래스
+
         .react-datepicker__day--weekend {
           color: #e83667;
         }
-        //오늘 날짜 이전, 선택불가 날짜 클래스
+
         .react-datepicker__day--disabled {
           color: #cacaca;
         }
-        //시작 날짜, 종료 날짜 사이 중간날짜 선택완료
+
         .react-datepicker__day--selected {
           background-color: ${maincolor};
           color: white;
