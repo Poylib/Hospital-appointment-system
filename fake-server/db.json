@@ -6,111 +6,14 @@
       "phoneNumber": "01012341234",
       "checked": false,
       "reservation": "clinic",
-      "reservationDate": "10-28-2022",
+      "reservationDate": "12-17-2022",
       "reservationTime": "10 : 00",
       "reservationNum": 224812140
-    },
-    {
-      "id": 4,
-      "name": "김병원",
-      "phoneNumber": "01012344321",
-      "noshow": true,
-      "reservation": "counseling",
-      "reservationDate": "10-27-2022",
-      "reservat벼4ionTime": "13 : 00",
-      "reservationNum": 224472841
-    },
-    {
-      "reservationDate": "2022년 27월 10일",
-      "reservationTime": "15 : 00",
-      "reservation": "검진",
-      "phoneNumber": "01012344321",
-      "noshow": false,
-      "name": "김병원",
-      "reservationNum": 284734143,
-      "id": 9
-    },
-    {
-      "reservationDate": "2022년 28월 10일",
-      "reservationTime": "12 : 00",
-      "reservation": "검진",
-      "phoneNumber": "01012344321",
-      "noshow": false,
-      "name": "김두번",
-      "reservationNum": 192619328,
-      "id": 11
-    },
-    {
-      "reservationDate": "2022년 27월 10일",
-      "reservationTime": "15 : 00",
-      "reservation": "검진",
-      "phoneNumber": "01012341234",
-      "noshow": false,
-      "name": "김정보",
-      "reservationNum": 378274660,
-      "id": 12
     }
   ],
   "schedule": [
     {
-      "id": 1,
-      "date": "10-25-2022",
-      "booked": [
-        {
-          "id": 1,
-          "time": "11 : 00",
-          "reservation": "counseling",
-          "client": 224432849
-        },
-        {
-          "id": 2,
-          "time": "13 : 00",
-          "reservation": "clinic",
-          "client": 224432850
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "date": "10-27-2022",
-      "booked": [
-        {
-          "id": 1,
-          "time": "13 : 00",
-          "reservation": "counseling",
-          "client": 224472841
-        },
-        {
-          "id": 2,
-          "time": "16 : 00",
-          "reservation": "counseling",
-          "client": 224472841
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "date": "10-30-2022",
-      "booked": [
-        {
-          "id": 1,
-          "time": "10 : 00",
-          "reservation": "counseling",
-          "client": 224472841
-        },
-        {
-          "id": 2,
-          "time": "11 : 00",
-          "reservation": "counseling",
-          "client": 224472841
-        },
-        {
-          "id": 3,
-          "time": "12 : 00",
-          "reservation": "counseling",
-          "client": 224472841
-        }
-      ]
+      "id": 1
     }
   ]
 }

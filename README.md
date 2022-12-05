@@ -61,8 +61,8 @@ npm run dev
 
 <br/>
 
-2. 브라우저에서 http://localhost:3000/pre-onboarding-lululab/ 로 접속하거나,
-[배포주소](https://poylib.github.io/pre-onboarding-lululab/)로 접속해주시면 됩니다.
+2. 브라우저에서 http://localhost:3000/ 로 접속하거나,
+[배포주소](https://hospital-appointment-system-navy.vercel.app/)로 접속해주시면 됩니다.
 
    <br/>
    <br/>
