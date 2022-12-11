@@ -30,11 +30,11 @@ const UserInfo = () => {
         if (data[i].name === name && data[i].phoneNumber === phoneNumber) {
           if (data[i].noshow) {
             alert('노쇼 이력이 있어 예약할 수 없습니다.');
-            navigate('/pre-onboarding-lululab/');
+            navigate('/');
             break;
           } else {
             alert('이미 예약한 일정이 있습니다. 중복 예약할 수 없습니다.');
-            navigate('/pre-onboarding-lululab/');
+            navigate('/');
             break;
           }
         }
