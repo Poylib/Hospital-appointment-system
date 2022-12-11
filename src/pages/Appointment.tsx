@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import Calendar from '../components/reservation/Calendar';
+import Calendar from '../components/appointment/Calendar';
 import { fadeIn } from '../util/Animation';
 
-const Reservation = () => {
+const Appointment = () => {
   return (
     <StyledReservation>
       <Calendar />
     </StyledReservation>
   );
 };
-export default Reservation;
+export default Appointment;
 
 const StyledReservation = styled.div`
   display: flex;
