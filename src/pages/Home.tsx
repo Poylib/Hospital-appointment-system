@@ -20,7 +20,7 @@ const Home = () => {
     }, 750);
   }, []);
 
-  const moveReservationHandler: React.MouseEventHandler<HTMLHeadingElement> = e => {
+  const moveAppoinrmentHandler: React.MouseEventHandler<HTMLHeadingElement> = e => {
     setCloseCheck(true);
     setTimeout(() => {
       if (e.target instanceof HTMLHeadingElement) navigate(`/dateinput/${e.target.id}`);
@@ -44,7 +44,7 @@ const Home = () => {
             onMouseLeave={() => setReservationHover(false)}
           >
             {reservationHover ? (
-              <div className='hover-box fadeout-reservation' onClick={moveReservationHandler}>
+              <div className='hover-box fadeout-reservation' onClick={moveAppoinrmentHandler}>
                 <h1 id='clinic'>진료</h1>
                 <h1 id='checkup'>검진</h1>
                 <h1 id='counseling'>상담</h1>
