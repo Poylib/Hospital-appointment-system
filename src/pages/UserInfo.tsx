@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Params, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { maincolor } from '../theme';
@@ -95,6 +95,9 @@ const UserInfo = () => {
 export default UserInfo;
 
 const StyledUserInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 60px 30px;
   height: 100vh;
 `;
@@ -102,10 +105,9 @@ const StyledUserInfo = styled.div`
 const FormBox = styled.div`
   display: flex;
   flex-direction: column;
-  position: relative;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 60vh;
   width: 50vw;
   max-width: 500px;
   margin: 0 auto;
@@ -113,10 +115,7 @@ const FormBox = styled.div`
   border-radius: 24px;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   h1 {
-    position: absolute;
     font-size: 30px;
-    top: 25px;
-    left: 25px;
     color: white;
   }
   form {

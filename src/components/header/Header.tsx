@@ -17,12 +17,11 @@ const StyledHeader = styled.div`
   position: fixed;
   display: flex;
   justify-content: center;
-  width: 100%;
-  max-width: 1440px;
+  width: 100vw;
   z-index: 99;
   background-color: inherits;
   img {
-    padding: 10px;
-    width: 140px;
+    padding-top: 30px;
+    width: 20rem;
   }
 `;

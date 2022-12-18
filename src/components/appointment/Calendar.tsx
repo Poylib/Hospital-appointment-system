@@ -54,30 +54,29 @@ export default Calendar;
 
 const StyledCalendar = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
+  width: 90vw;
   min-width: 550px;
-  height: 70vh;
+  justify-content: space-evenly;
+  margin-top: 100px;
   .react-datepicker {
     width: 100%;
     padding: 30px 20px;
     border: none;
     border-right: 1px solid #eaeaea;
-    font-size: 1rem;
+    font-size: 2rem;
     color: #606060;
     .react-datepicker__current-month {
       padding: 10px;
-      font-size: 20px;
+      font-size: 30px;
       color: white;
     }
     .react-datepicker__navigation--previous {
-      left: 20px;
-      top: 50%;
+      left: 30px;
+      top: 60%;
     }
     .react-datepicker__navigation--next {
-      right: 20px;
-      top: 50%;
+      right: 30px;
+      top: 60%;
     }
     .react-datepicker__month-container {
       width: 100%;
@@ -91,18 +90,18 @@ const StyledCalendar = styled.div`
         .react-datepicker__day-names {
           margin: 0;
           .react-datepicker__day-name {
-            margin: 3%;
+            margin: 3% 4%;
             color: white;
             font-weight: 600;
-            font-size: 20px;
+            font-size: 35px;
           }
         }
       }
       .react-datepicker__month {
         .react-datepicker__day {
-          margin: 3%;
+          margin: 3% 4%;
           font-weight: 600;
-          font-size: 20px;
+          font-size: 30px;
           color: #606060;
         }
 
@@ -116,7 +115,12 @@ const StyledCalendar = styled.div`
 
         .react-datepicker__day--selected {
           background-color: ${maincolor};
+          margin: -0.5% 0.7%;
+          height: 75px;
+          line-height: 75px;
+          width: 80px;
           color: white;
+          font-size: 40px;
         }
       }
     }

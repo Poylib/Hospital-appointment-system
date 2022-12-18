@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Noto Sans KR', sans-serif;
-    max-width:1440px;
+    max-width:100vw;
     margin:0 auto;
   }
 `;

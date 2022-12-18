@@ -5,7 +5,6 @@ import { maincolor } from '../../theme';
 import { TimeProps } from '../../util/interface';
 const TimeTable = ({ schedule, setSelected, selected }: TimeProps) => {
   const arr = ['10 : 00', '11 : 00', '12 : 00', '13 : 00', '14 : 00', '15 : 00', '16 : 00', '17 : 00', '18 : 00'];
-
   const navigate = useNavigate();
   const params = useParams();
   const [timeLine, setTimeLine] = useState(arr);
@@ -15,7 +14,7 @@ const TimeTable = ({ schedule, setSelected, selected }: TimeProps) => {
     setTimeLine(newTimeLine);
   }, [schedule]);
 
-  const clickHandle: React.MouseEventHandler<HTMLLIElement> = e => {
+  const clickHandle: React.MouseEventHandler<HTMLParagraphElement> = e => {
     if (e.target instanceof HTMLElement) {
       const inputSelect = `${selected}-${params.id}-${e.target.innerHTML.split(' : ')[0]}`;
       setSelected(inputSelect);
@@ -43,46 +42,61 @@ const TimeTable = ({ schedule, setSelected, selected }: TimeProps) => {
 
   return (
     <StyledTimeTable>
-      {timeLine.map((time, index) => {
-        return (
-          <li //
-            key={`${time}_${index}`}
-            id={`${index}`}
-            onClick={clickHandle}
-          >
-            {time}
-          </li>
-        );
-      })}
+      <h1>예약가능한 시간</h1>
+      <div className='time-box'>
+        {timeLine.map((time, index) => {
+          return (
+            <p //
+              key={`${time}_${index}`}
+              id={`${index}`}
+              onClick={clickHandle}
+            >
+              {time}
+            </p>
+          );
+        })}
+      </div>
     </StyledTimeTable>
   );
 };
 
 export default TimeTable;
 
-const StyledTimeTable = styled.ul`
-  position: relative;
+const StyledTimeTable = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 50%;
-  min-width: 140px;
-  height: 80%;
-  max-height: 700px;
+  height: 100%;
+  margin: 30px 20px;
   margin-left: 15px;
-  overflow: scroll;
-  li {
+  background-color: ${maincolor};
+  border-top-right-radius: 0.3rem;
+  border-top-left-radius: 0.3rem;
+  h1 {
     width: 100%;
-    height: 50px;
-    margin: 10px 0;
-    padding: 10px;
     text-align: center;
-    font-size: 30px;
-    &:hover {
-      border-radius: 10px;
+    margin-top: 30px;
+    padding: 30px;
+    height: 160px;
+    font-weight: bold;
+    font-size: 40px;
+    color: white;
+  }
+  .time-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    p {
+      width: 50%;
+      margin: 10px 0;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 40px;
       color: white;
-      background-color: ${maincolor};
-      cursor: pointer;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 `;

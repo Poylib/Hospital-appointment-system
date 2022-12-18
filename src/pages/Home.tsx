@@ -130,9 +130,6 @@ const StyledHome = styled.div<{ closeCheck: boolean }>`
       #counseling {
         width: 100%;
         height: 100%;
-        &:hover {
-          box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-        }
       }
     }
     .text-box {
