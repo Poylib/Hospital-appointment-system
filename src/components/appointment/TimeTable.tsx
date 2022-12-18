@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { maincolor } from '../../theme';
+import { maincolor, basecolor } from '../../theme';
 import { TimeProps } from '../../util/interface';
 const TimeTable = ({ schedule, setSelected, selected }: TimeProps) => {
   const arr = ['10 : 00', '11 : 00', '12 : 00', '13 : 00', '14 : 00', '15 : 00', '16 : 00', '17 : 00', '18 : 00'];
@@ -56,6 +56,7 @@ const TimeTable = ({ schedule, setSelected, selected }: TimeProps) => {
           );
         })}
       </div>
+      <button>예약하기</button>
     </StyledTimeTable>
   );
 };
@@ -69,34 +70,52 @@ const StyledTimeTable = styled.div`
   width: 50%;
   height: 100%;
   margin: 30px 20px;
-  margin-left: 15px;
+  padding: 20px 0;
   background-color: ${maincolor};
   border-top-right-radius: 0.3rem;
   border-top-left-radius: 0.3rem;
   h1 {
-    width: 100%;
+    width: 90%;
     text-align: center;
-    margin-top: 30px;
-    padding: 30px;
-    height: 160px;
+    padding: 10px;
+    height: 100px;
+    margin-bottom: 20px;
+    line-height: 80px;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
+    border-bottom: 1px solid white;
   }
   .time-box {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     p {
-      width: 50%;
-      margin: 10px 0;
-      padding: 20px 0;
+      width: 30%;
+      padding: 10px 0;
+      margin: 10px;
       text-align: center;
-      font-size: 40px;
+      font-size: 30px;
       color: white;
+      /* opacity: 0.4; */
       &:hover {
         cursor: pointer;
       }
+    }
+  }
+  button {
+    background-color: ${maincolor};
+    /* opacity: 0.8; */
+    border: none;
+    color: white;
+    font-size: 30px;
+    width: 90%;
+    padding: 20px 0;
+    margin-top: 20px;
+    border-top: 1px solid white;
+    &:hover {
+      cursor: pointer;
     }
   }
 `;

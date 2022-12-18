@@ -6,10 +6,10 @@ import { maincolor } from '../theme';
 import { userCheck } from '../util/interface';
 
 const UserInfo = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [randomNum, setRandomNum] = useState(0);
-  const navigate = useNavigate();
   const params: Readonly<Params<string> | any> = useParams();
   const paramsArr = params.id.split('-');
   const reservationDate = `${paramsArr[2]}년 ${paramsArr[1]}월 ${paramsArr[0]}일`;
@@ -50,7 +50,6 @@ const UserInfo = () => {
       });
     } catch (error) {
       console.log(error);
-      console.log('get error');
     }
 
     setRandomNum(reservationNum);
@@ -107,7 +106,7 @@ const FormBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60vh;
+  height: 70vh;
   width: 50vw;
   max-width: 500px;
   margin: 0 auto;
